@@ -1,4 +1,2 @@
-mysql/
-.idea/
-*.map
-.env
+secrets/
+volumes/
