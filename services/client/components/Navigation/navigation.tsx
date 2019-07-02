@@ -46,17 +46,78 @@ export default () => {
       window.scrollY 
     )
 
-    console.log(position);
+    const opacity = linear_interpolation(
+      0,
+      1,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0,
+      window.scrollY
+    )
+
+    const margin_title = linear_interpolation(
+      0,
+      $('#title').css('margin-top').replace('px', '') as unknown as number,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0, 
+      window.scrollY
+    )
+
+    const hw = $('#header').css('width').replace('px', '') as unknown as number;
+    const tw = $('#title').css('width').replace('px', '') as unknown as number;
+    const hh = $('#header').css('height').replace('px', '') as unknown as number;
+
+    const position_title_x = linear_interpolation(
+      0,
+      (hw - tw) / 2,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0, 
+      window.scrollY
+    )
+
+    const position_title_y = linear_interpolation(
+      0,
+      hh / 2,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0, 
+      window.scrollY
+    )
+
+    const size_title = linear_interpolation(
+      0.7,
+      1,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0,
+      window.scrollY
+    )
+
+    const margin_left_pre_title = linear_interpolation(
+      18,
+      0,
+      ($('#header').css('max-height').replace('px', '') as unknown as number)-70,
+      0,
+      window.scrollY
+    )
+
+    
+
+    console.log();
+
 
     $('#logo_section').css('grid-template-columns', `${position < 6 ? 6 : position}px auto 1fr`);
     
     $('#header').css('height').replace('px', '') as unknown as number < 65 ? $('#header').addClass('mdc-top-app-bar--fixed-scrolled-new') : $('#header').removeClass('mdc-top-app-bar--fixed-scrolled-new');
 
+    $('#pre_title').css('opacity', opacity);
+    //$('#title').css('margin-top', margin_title);
+    $('#title_section').css('grid-template-columns', `${position_title_x}px auto 1fr`);
+    $('#title_section').css('grid-template-rows', `${position_title_y}px 1fr`);
+    $('#pre_title').css('margin-left', `-${margin_left_pre_title > 18 ? 18 : margin_left_pre_title}rem`);
+    $('#title').css('transform', `scale(${size_title < 0.7 ? 0.7 : size_title})`);
   }
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    //window.addEventListener('resize', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -95,13 +156,14 @@ export default () => {
             </TopAppBarIcon>
           </TopAppBarSection>
         </TopAppBarRow>
-          <TopAppBarSection id="logo_section">
+          <TopAppBarSection id="logo_section" >
             <div id="logo" className="mdc-toolbar__logo" />
           </TopAppBarSection>
           <TopAppBarSection id="title_section">
-            <span id="title">
-              Fachschaft MPI
-            </span>
+            <div id="title">
+              <span id="pre_title">Willkommen in der </span>
+              <span>Fachschaft MPI</span>
+            </div>
           </TopAppBarSection>
       </TopAppBar>
       <TopAppBarFixedAdjust>
