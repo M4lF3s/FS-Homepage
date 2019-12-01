@@ -1,0 +1,22 @@
+$colors: (
+        primary: rgba(255, 102, 0, 0.8),
+        secondary: green,
+        background: white
+);
+
+:root {
+    @each $name, $color in $colors {
+        --mdc-theme-#{$name}: #{$color};
+    }
+}  
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background: #ccc;
+    font: 11px Montserrat;
+    color: #fff;
+    margin: 0;
+}

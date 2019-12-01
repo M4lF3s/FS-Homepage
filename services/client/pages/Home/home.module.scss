@@ -1,0 +1,69 @@
+:root {
+
+}
+
+@media screen and (min-width: 464px) {
+
+}
+
+@media screen and (min-width: 928px) {
+
+}
+
+@media screen and (min-width: 1152px) {
+  :root {
+    --page-height: calc(100vh - 65px);
+    --page-display: grid;
+
+
+    --plakat-width: 350px;
+    --plakat-height: auto;
+    --plakat-object-fit: fill;
+
+    --text-width: 500px;
+
+    .page{
+      grid-template-columns: 1fr auto 10rem auto 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas:
+              ". . . . ."
+              ". poster . text ."
+              ". . . . .";
+    }
+  }
+}
+
+/* -------------------- Logic Fold -------------------- */
+
+.page {
+  height: var(--page-height);
+  display: var(--page-display);
+}
+
+.plakat {
+  grid-area: poster;
+  width: var(--plakat-width);
+  height: var(--plakat-height);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: var(--plakat-object-fit);
+    }
+}
+
+.text {
+  grid-area: text;
+  width: var(--text-width);
+
+  h4 {
+    margin-block-start: unset;
+    margin-block-end: .5em;
+  }
+
+}
+
+.btnRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

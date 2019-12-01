@@ -1,0 +1,103 @@
+.page {
+  height: calc(100vh - 65px);
+  width: 100%;
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("../../assets/img/fachschaft.png");
+  background-size: cover;
+  height: 60vh;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  text-align: center;
+  background-attachment: local;
+  background-position: top center;
+
+  img {
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+  }
+
+  span {
+    width: 100vw;
+    align-self: center;
+    position: absolute;
+    margin: auto;
+    font-size: 4em;
+    font-weight: lighter;
+  }
+}
+
+.cardArea {
+  margin-top: 3em;
+  display: grid;
+  height: 195px;
+  grid-template-columns: 1fr 300px 1fr 300px 1fr 300px 1fr;
+  grid-template-rows: 195px;
+  grid-template-areas:
+    ". first . second . third .";
+
+}
+
+.card {
+  background-color: white;
+  color: #3c3c3c;
+  border-radius: 4px;
+  padding: 15px;
+  width: 300px;
+
+  &:nth-child(1) {
+    grid-area: first;
+    i {
+      background-color: #009dff;
+    }
+  }
+  &:nth-child(2) {
+    grid-area: second;
+    i {
+      background-color: #F752B1;
+    }
+  }
+  &:nth-child(3) {
+    grid-area: third;
+    i {
+      background-color: #D4E54F;
+    }
+  }
+
+  i {
+    font-size: 40pt;
+    border-radius: 50%;
+    padding: 10px;
+    width: fit-content;
+  }
+
+}
+
+.cardBtn {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+  .btn {
+    margin: auto;
+  }
+
+}
+
+.politik {
+  position: absolute;
+  top: 0;
+  margin-top: 100vh;
+}
+
+.ersti {
+  margin-top: 100vh;
+}
+
+.vertretung {
+  margin-top: 200vh;
+}
