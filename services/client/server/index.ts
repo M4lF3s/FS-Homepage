@@ -17,18 +17,7 @@ const devProxy = {
     target: 'http://wordpress/wp-json/',
     pathRewrite: { '^/api': '/' },
     changeOrigin: true
-  },
-    '/wp-admin': {
-      target: 'http://wordpress',
-        pathRewrite: { '^/wp-admin': '/wp-admin' },
-        changeOrigin: true,
-        followRedirects: true
-    },
-    '**/*.php': {
-        target: 'http://wordpress',
-        followRedirects: true,
-        changeOrigin: true
-    }
+  }
 }
 
 
