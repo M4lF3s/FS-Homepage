@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*
+.fs-general-form { display: inline-block; float: left; }
+.fs-profile-preview { width: 100px; height: 166px; border: 2px dashed black; padding: 20px; text-align: center; margin-left: -450px; margin-bottom: -450px; }
+
+.profile-picture { width: 122px; height: 122px; overflow: hidden; border-radius: 50%; margin: 20px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
+
+.fs-profile-preview{
+  width: 100px; height: 166px; border: 2px dashed black; padding: 20px; text-align: center; margin-left: -450px; margin-bottom: -450px; display: inline-block; float: left; background-repeat: no-repeat; background-size: contain;
+}
+
+.fs-general-form {
+  margin-left: 300px;
+}
+
+*/
+.members-accordion {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.tab {
+  margin-right: 20px;
+  color: white;
+  overflow: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+.tab-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  background: #2c3e50;
+  font-weight: bold;
+  cursor: pointer;
+  /* Icon */
+}
+.tab-label:hover {
+  background: #1a252f;
+}
+.tab-label::after {
+  content: "❯";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+.tab-content {
+  max-height: 0;
+  padding: 0 1em;
+  color: #2c3e50;
+  background: white;
+  transition: all 0.35s;
+  /*
+   .fs-general-form {
+     margin-left: 300px;
+     .form-table {
+       margin-top: unset;
+     }
+   }
+   .fs-profile-preview { width: 100px; height: 166px; border: 2px dashed black; padding: 20px; text-align: center; margin-left: -450px; margin-bottom: -450px; }
+  */
+}
+.tab-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  font-size: 0.75em;
+  background: #2c3e50;
+  cursor: pointer;
+}
+.tab-close:hover {
+  background: #1a252f;
+}
+
+.members-accordion:checked + .tab-label {
+  background: #1a252f;
+}
+.members-accordion:checked + .tab-label::after {
+  transform: rotate(90deg);
+}
+.members-accordion:checked ~ .tab-content {
+  max-height: 100vh;
+  padding: 1em;
+}
+
+.members {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=settings.css.map */

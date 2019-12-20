@@ -22,25 +22,7 @@ add_action( 'init', function() {
 
 require get_template_directory() . '/settings.php';
 
-
-
-function create_posttype(){
-
-    register_post_type('protokolle',
-        array(
-            'labels' => array(
-                'name' => __('Protokolle'),
-                'singular_name' => __('Protokoll')
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'protokolle'),
-        )
-    );
-}
-
-// Hooking up our function to theme setup
-add_action('init', 'create_posttype');
+require get_template_directory() . '/types/members.php';
 
 /*
 * Creating a function to create our CPT
@@ -72,7 +54,7 @@ function custom_post_type(){
         'labels' => $labels,
         'hierarchical' => false,
         'public' => true,
-        'show_in_menu' => 'settings.php',
+        'show_in_menu' => false,
         'has_archive' => true,
         'exclude_from_search' => false,
         'publicly_queryable' => true,
@@ -92,3 +74,10 @@ function custom_post_type(){
 */
 
 add_action('init', 'custom_post_type');
+
+function fs_load_admin_scripts( $hook ){
+    wp_register_style( 'settings', get_template_directory_uri() . '/assets/css/settings.css', array(), '1.0.0', 'all' );
+    wp_enqueue_style( 'settings' );
+    wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'fs_load_admin_scripts' );
